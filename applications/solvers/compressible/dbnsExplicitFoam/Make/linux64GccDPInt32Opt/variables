@@ -1,3 +1,1 @@
-dbnsExplicitFoam.C
-
 EXE=$(COMPRESSIBLE_FOAM_APPBIN)/dbnsExplicitFoam

@@ -1,21 +1,42 @@
-# etc/bashrc
-# Source OpenFOAM's environment first
-. $WM_PROJECT_DIR/etc/bashrc
 
-# Project root
-export MY_SOLVER_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)
+# export Project root directory
+export COMPRESSIBLE_FOAM_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")/../" && pwd)
+# FOR MAC
+# export COMPRESSIBLE_FOAM_DIR=$(cd "$(dirname "$0")/../" && pwd)
 
-# User-specific bin/lib inside OpenFOAM user dir
-export MY_SOLVER_BIN=$WM_PROJECT_USER_DIR/bin
-export MY_SOLVER_LIB=$WM_PROJECT_USER_DIR/lib
+# Export the location of libraries and executables
+export COMPRESSIBLE_FOAM_LIBBIN="${COMPRESSIBLE_FOAM_DIR}/lib"
+export COMPRESSIBLE_FOAM_APPBIN="${COMPRESSIBLE_FOAM_DIR}/bin"
 
-mkdir -p "$MY_SOLVER_BIN" "$MY_SOLVER_LIB"
+# Add COMPRESSIBLE_FOAM_APPBIN to the PATH if it isn't already on it
+if [[ ":$PATH:" != *":$COMPRESSIBLE_FOAM_APPBIN:"* ]]; then
+    PATH=$PATH:$COMPRESSIBLE_FOAM_APPBIN
+fi
 
-# Add to PATH and LD_LIBRARY_PATH
-export PATH=$MY_SOLVER_BIN:$PATH
-export LD_LIBRARY_PATH=$MY_SOLVER_LIB:$LD_LIBRARY_PATH
+# Add COMPRESSIBLE_FOAM_LIBBIN to the LD_LIBRARY_PATH if it isn't already on it
+if [[ ":$LD_LIBRARY_PATH:" != *":$COMPRESSIBLE_FOAM_LIBBIN:"* ]]; then
+    LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$COMPRESSIBLE_FOAM_LIBBIN
+fi
 
-echo "Custom solver environment set:"
-echo "  Solver dir: $MY_SOLVER_DIR"
-echo "  Bin dir   : $MY_SOLVER_BIN"
-echo "  Lib dir   : $MY_SOLVER_LIB"
+
+# # etc/bashrc
+# # Source OpenFOAM's environment first
+# . $WM_PROJECT_DIR/etc/bashrc
+
+# # Project root
+# export MY_SOLVER_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)
+
+# # User-specific bin/lib inside OpenFOAM user dir
+# export MY_SOLVER_BIN=$WM_PROJECT_USER_DIR/bin
+# export MY_SOLVER_LIB=$WM_PROJECT_USER_DIR/lib
+
+# mkdir -p "$MY_SOLVER_BIN" "$MY_SOLVER_LIB"
+
+# # Add to PATH and LD_LIBRARY_PATH
+# export PATH=$MY_SOLVER_BIN:$PATH
+# export LD_LIBRARY_PATH=$MY_SOLVER_LIB:$LD_LIBRARY_PATH
+
+# echo "Custom solver environment set:"
+# echo "  Solver dir: $MY_SOLVER_DIR"
+# echo "  Bin dir   : $MY_SOLVER_BIN"
+# echo "  Lib dir   : $MY_SOLVER_LIB"
