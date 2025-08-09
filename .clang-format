@@ -1,0 +1,42 @@
+# OpenFOAM-friendly C++ style
+BasedOnStyle: LLVM
+Language: Cpp
+
+# Line width
+ColumnLimit: 100
+
+# Indentation
+IndentWidth: 4
+TabWidth: 4
+UseTab: Never
+ContinuationIndentWidth: 8
+NamespaceIndentation: None
+
+# Braces & spacing (K&R-like / Attach)
+BreakBeforeBraces: Attach
+AllowShortFunctionsOnASingleLine: Empty
+SpaceBeforeParens: ControlStatements
+SpaceAfterCStyleCast: true
+SpacesInParentheses: false
+SpacesInSquareBrackets: false
+SpacesInAngles:  false
+SpacesBeforeTrailingComments: 1
+
+# Pointers & references
+PointerAlignment: Left
+ReferenceAlignment: Left
+
+# Function & argument wrapping
+BinPackArguments: false
+BinPackParameters: false
+AlignAfterOpenBracket: Align
+AllowAllArgumentsOnNextLine: false
+AllowAllParametersOfDeclarationOnNextLine: false
+
+# Includes
+SortIncludes: false            # Preserve OpenFOAM include order
+IncludeBlocks: Preserve
+
+# Templates & lists
+Cpp11BracedListStyle: false
+}
