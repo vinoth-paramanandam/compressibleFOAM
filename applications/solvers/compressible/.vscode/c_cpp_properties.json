@@ -1,0 +1,24 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "${env:FOAM_SRC}/**",
+                "${env:WM_PROJECT_DIR}/src/**",
+                "${env:WM_PROJECT_USER_FOAM_DIR}/applications/solvers/compressible/**",
+                "${env:WM_PROJECT_USER_FOAM_DIR}/applications/**",
+                "${env:WM_PROJECT_USER_FOAM_DIR}/libraries/**",
+                //"${env:WM_PROJECT_USER_DIR}/src/**",
+                //"${env:WM_PROJECT_USER_DIR}/applications/**",
+                "/usr/include/**"
+            ],
+            "defines": [],
+            "compilerPath": "/usr/bin/g++",
+            "cStandard": "c17",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "linux-gcc-x64"
+        }
+    ],
+    "version": 4
+}

@@ -1,0 +1,38 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "OF-Debug",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${env:FOAM_USER_APPBIN}/${fileBasenameNoExtension}",
+            "args": [
+
+            ],
+            "stopAtEntry": true,
+            "cwd": "${workspaceFolder}",
+            "environment": [
+                // Inherit environment variables crucial for OpenFOAM
+                { "name": "FOAM_INST_DIR", "value": "${env:FOAM_INST_DIR}" },
+                { "name": "WM_PROJECT_DIR", "value": "${env:WM_PROJECT_DIR}" },
+                { "name": "FOAM_APPBIN", "value": "${env:FOAM_APPBIN}" },
+                { "name": "FOAM_USER_APPBIN", "value": "${env:FOAM_USER_APPBIN}" },
+                // Add other OpenFOAM environment variables as needed
+            ],
+            "externalConsole": ,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            "preLaunchTask": "wmake-build"
+        }
+
+    ]
+}

@@ -1,0 +1,27 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "wmake-build",
+            "type": "shell",
+            "command": "wmake",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher":[
+                "$gcc"
+            ],
+            "options": {
+                "env": {
+                    "FOAM_INST_DIR": "${env:FOAM_INST_DIR}",
+                    "WM_PROJECT_DIR": "${env:WM_PROJECT_DIR}",
+                    "WM_NCOMPPROCS": "${env:WM_NCOMPPROCS}"
+                }
+            }
+
+        }
+    ]
+}
