@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+# Build all project libraries
+set -euo pipefail
+
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+NPROCS="${NPROCS:-}"
+while getopts ":j:" opt; do
+  case $opt in
+    j) NPROCS="$OPTARG" ;;
+    *) echo "Usage: $0 [-j N]"; exit 1 ;;
+  esac
+done
+
+if [[ -z "${NPROCS}" ]]; then
+  if command -v nproc >/dev/null 2>&1; then
+    NPROCS="$(nproc)"
+  else
+    NPROCS=4
+  fi
+fi
+echo "[libraries/Allwmake] Using -j${NPROCS}"
+
+( cd "$SCRIPT_DIR/timeIntegrators" && ./Allwmake -j "${NPROCS}" )
+( cd "$SCRIPT_DIR/numFlux" && ./Allwmake -j "${NPROCS}" )

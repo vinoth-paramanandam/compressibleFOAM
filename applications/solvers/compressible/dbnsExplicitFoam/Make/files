@@ -1,0 +1,3 @@
+dbnsExplicitFoam.C
+
+EXE=$(WM_PROJECT_USER_FOAM_DIR)/dbnsExplicitFoam

@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Build the dbnsExplicitFoam solver
+set -euo pipefail
+NPROCS="${NPROCS:-}"
+while getopts ":j:" opt; do
+  case $opt in
+    j) NPROCS="$OPTARG" ;;
+  esac
+done
+if [[ -z "${NPROCS}" ]]; then
+  if command -v nproc >/dev/null 2>&1; then NPROCS="$(nproc)"; else NPROCS=4; fi
+fi
+echo "[dbnsExplicitFoam] wmake -j${NPROCS}"
+wmake -j "${NPROCS}"

@@ -1,0 +1,21 @@
+# etc/bashrc
+# Source OpenFOAM's environment first
+. $WM_PROJECT_DIR/etc/bashrc
+
+# Project root
+export MY_SOLVER_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)
+
+# User-specific bin/lib inside OpenFOAM user dir
+export MY_SOLVER_BIN=$WM_PROJECT_USER_DIR/bin
+export MY_SOLVER_LIB=$WM_PROJECT_USER_DIR/lib
+
+mkdir -p "$MY_SOLVER_BIN" "$MY_SOLVER_LIB"
+
+# Add to PATH and LD_LIBRARY_PATH
+export PATH=$MY_SOLVER_BIN:$PATH
+export LD_LIBRARY_PATH=$MY_SOLVER_LIB:$LD_LIBRARY_PATH
+
+echo "Custom solver environment set:"
+echo "  Solver dir: $MY_SOLVER_DIR"
+echo "  Bin dir   : $MY_SOLVER_BIN"
+echo "  Lib dir   : $MY_SOLVER_LIB"
